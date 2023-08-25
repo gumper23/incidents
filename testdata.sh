@@ -15,6 +15,23 @@ if ! command -v "gdate" &>/dev/null; then
     exit 1
 fi
 
+##############################################################################
+# Create the table
+##############################################################################
+set +e # -- READ returns 1 due to no EOF in heredocs
+IFS='' read -rd '' INCIDENTS <<-'EOF'
+create table if not exists incidents (
+    id serial not null primary key
+    , incident_ts timestamp not null
+    , severity smallint not null check(severity > 0 and severity <= 5)
+);
+EOF
+set -e
+echo "${INCIDENTS}"
+
+##############################################################################
+# Generate the inserts
+##############################################################################
 TOTAL_DAYS=50
 MAX_INCIDENTS_PER_DAY=3
 TODAY=$(gdate '+%Y-%m-%d')

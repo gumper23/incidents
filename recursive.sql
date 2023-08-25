@@ -1,17 +1,3 @@
-drop table if exists incidents;
-create table incidents (
-    id int unsigned not null auto_increment primary key
-    , incident_datetime datetime not null
-    , severity tinyint unsigned not null default 3
-);
-insert into incidents(incident_datetime, severity) values
-('2023-07-01 01:00', 1),
-('2023-08-01 01:00', 1),
-('2023-08-01 02:00', 2),
-('2023-08-01 03:00', 3),
-('2023-08-05 01:00', 1),
-('2023-08-08 01:00', 1);
-
 with recursive nums as (
     select 0 as num
     union all 

@@ -1,9 +1,3 @@
-create table if not exists incidents (
-    id serial not null primary key
-    , incident_ts timestamp not null
-    , severity smallint not null check(severity > 0 and severity <= 5)
-);
-
 with recursive nums as (
     select 0 as num
     union all 
