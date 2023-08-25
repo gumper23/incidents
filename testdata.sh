@@ -21,7 +21,7 @@ TODAY=$(gdate '+%Y-%m-%d')
 for ((i=0; i<=TOTAL_DAYS; i++))
 do
     DATE=$(gdate +%Y-%m-%d -d "$TODAY - $i day")
-    NUM_INCIDENTS=$((RANDOM % (MAX_INCIDENTS_PER_DAY+1)))
+    NUM_INCIDENTS=$((RANDOM % (MAX_INCIDENTS_PER_DAY + 1)))
     echo "-- [${DATE}] incidents [${NUM_INCIDENTS}]"
     for ((j=1; j<=NUM_INCIDENTS; j++))
     do
