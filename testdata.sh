@@ -18,6 +18,7 @@ fi
 TOTAL_DAYS=50
 MAX_INCIDENTS_PER_DAY=3
 TODAY=$(gdate '+%Y-%m-%d')
+INSERTS=0
 for ((i=0; i<=TOTAL_DAYS; i++))
 do
     DATE=$(gdate +%Y-%m-%d -d "$TODAY - $i day")
@@ -28,5 +29,7 @@ do
         DATETIME=$(printf "${DATE} %02d:%02d:%02d" $((RANDOM % 24)) $((RANDOM % 60)) $((RANDOM % 60)))
         SEVERITY=$((RANDOM % 3 + 1))
         echo "insert into incidents(incident_ts, severity) values('${DATETIME}', ${SEVERITY});"
+        ((INSERTS++))
     done
 done
+echo "-- Total inserts: [${INSERTS}]"
