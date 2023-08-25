@@ -27,6 +27,6 @@ do
     do
         DATETIME=$(printf "${DATE} %02d:%02d:%02d" $((RANDOM % 24)) $((RANDOM % 60)) $((RANDOM % 60)))
         SEVERITY=$((RANDOM % 3 + 1))
-        echo "insert into incidents(incident_datetime, severity) values('${DATETIME}', ${SEVERITY});"
+        echo "insert into incidents(incident_ts, severity) values('${DATETIME}', ${SEVERITY});"
     done
 done
