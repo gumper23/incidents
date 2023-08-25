@@ -16,9 +16,7 @@ if ! command -v "gdate" &>/dev/null; then
 fi
 
 TOTAL_DAYS=50
-RANDOM=$(gdate +"%T.%N")
 MAX_INCIDENTS_PER_DAY=3
-
 TODAY=$(gdate '+%Y-%m-%d')
 for ((i=0; i<=TOTAL_DAYS; i++))
 do
